@@ -162,6 +162,7 @@ source airflow_venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 
+
 * 5.2 Place the dataset
     data/
   ├── train/
@@ -294,6 +295,7 @@ This section describes the exact steps required to reproduce the pipeline execut
   dags/dynamic_pricing_dag.py
 
   This configuration change does not affect the pipeline logic or analytical results.
+
 
 
 
