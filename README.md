@@ -1,5 +1,7 @@
 # Dynamic Pricing Pipeline using Apache Airflow
 
+Yadukrishnan Mancherithody - Technical Lead
+Arun Thomas - Documentation & Presentation Lead
 
 ## 1. Project Overview
 
@@ -327,6 +329,7 @@ This section describes the exact steps required to reproduce the pipeline execut
   ```
 
   This configuration change does not affect the pipeline logic or analytical results.
+
 
 
 
