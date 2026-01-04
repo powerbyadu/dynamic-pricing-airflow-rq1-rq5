@@ -322,9 +322,12 @@ This section describes the exact steps required to reproduce the pipeline execut
   The Airflow DAG references a project directory path corresponding to the local development
   environment. When running the project in a different directory, this path can be updated in:
 
+  ```bash
   dags/dynamic_pricing_dag.py
+  ```
 
   This configuration change does not affect the pipeline logic or analytical results.
+
 
 
 
