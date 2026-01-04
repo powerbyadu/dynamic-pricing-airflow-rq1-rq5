@@ -150,20 +150,26 @@ Raw datasets are **not committed to the repository** due to size considerations.
   - `outputs/tables/`
 
 ---
-### 5  
+### 5  How to run the code
 
 * 5.1 Set up the environment
 
+```bash
 git clone https://github.com/powerbyadu/dynamic-pricing-airflow-rq1-rq5.git
 cd dynamic-pricing-airflow-rq1-rq5
+```
 
+```bash
 python3 -m venv airflow_venv
 source airflow_venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
+```
+
 
 
 * 5.2 Place the dataset
+  ```text
     data/
   ├── train/
   │   ├── df_Customers_train.csv
@@ -177,26 +183,35 @@ pip install -r requirements.txt
       ├── df_OrderItems_test.csv
       ├── df_Payments_test.csv
       └── df_Products_test.csv
+  ```
 
 * 5.3 Execute pipeline scripts in order
   * Data ingestion and joining
+    ```bash
     python src/01_ingest_join.py --split train
     python src/01_ingest_join.py --split test
+    ```
 
   * Data cleaning and feature engineering
+    ```bash
     python src/02_clean_features.py --split train
     python src/02_clean_features.py --split test
+    ```
 
   * Model training
+    ```bash
     python src/03_train.py
+    ```
 
   * Generate research outputs
+    ```bash
     python src/04_make_outputs.py --split train
     python src/04_make_outputs.py --split test
+    ```
   
 
 ## 6. Repository Structure
-
+```text
 dynamic-pricing-airflow-rq1-rq5/
 ├── dags/
 │ └── dynamic_pricing_dag.py
@@ -211,6 +226,7 @@ dynamic-pricing-airflow-rq1-rq5/
 ├── requirements.txt
 ├── start_env.sh
 └── README.md
+```
 
 * 6.1 Folder purpose explanation:
 
@@ -237,22 +253,28 @@ This section describes the exact steps required to reproduce the pipeline execut
 * 8.1 Repository Setup
   Clone the repository and navigate to the project directory:
 
+  ```bash
   git clone https://github.com/powerbyadu/dynamic-pricing-airflow-rq1-rq5.git
   cd dynamic-pricing-airflow-rq1-rq5
+  ```
 
 * 8.2 Python Environment Setup
   Create and activate a virtual environment to isolate dependencies:
   
+  ```bash
   python3 -m venv airflow_venv
   source airflow_venv/bin/activate
+  ```
 
   Upgrade pip and install required packages:
 
+  ```bash
   pip install --upgrade pip
   pip install -r requirements.txt
+  ```
 
 * 8.3 Data Placement
-
+```text
  data/
  ├── train/
  │   ├── df_Customers_train.csv
@@ -266,27 +288,35 @@ This section describes the exact steps required to reproduce the pipeline execut
      ├── df_OrderItems_test.csv
      ├── df_Payments_test.csv
      └── df_Products_test.csv
-
+```
 * 8.4 Airflow Initialization
   Set the Airflow home directory within the project and initialize the metadata database:
 
+  ```bash
   export AIRFLOW_HOME="$(pwd)/airflow_home"
   mkdir -p "$AIRFLOW_HOME"
   airflow db init
+  ```
 
 * 8.5 Starting Airflow Services
   Start the Airflow webserver and scheduler in separate terminals:
 
  * Termina 1
+   ```bash
    airflow webserver
+   ```
    
  * Terminal 2
+   ```bash
    airflow scheduler
+   ```
   
 * 8.6 Executing the Pipeline
   Open the Airflow web interface:
 
+  ```bash
   http://localhost:8080
+  ```
 
 * 8.6 Notes on Environment Configuration
   The Airflow DAG references a project directory path corresponding to the local development
@@ -295,6 +325,7 @@ This section describes the exact steps required to reproduce the pipeline execut
   dags/dynamic_pricing_dag.py
 
   This configuration change does not affect the pipeline logic or analytical results.
+
 
 
 
