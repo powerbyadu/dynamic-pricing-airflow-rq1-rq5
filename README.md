@@ -168,6 +168,15 @@ dynamic-pricing-airflow-rq1-rq5/
 ├── start_env.sh
 └── README.md
 
+* 5.1 Folder purpose explanation:**
+
+- dags/` – Contains the Apache Airflow DAG definition that orchestrates the pipeline  
+- `src/` – Contains Python scripts for each pipeline stage (ingestion, processing, training, outputs)  
+- `outputs/` – Stores all generated figures and tables for RQ1–RQ5  
+- `requirements.txt` – Lists all Python dependencies  
+- `start_env.sh` – Optional helper script for environment setup  
+- `README.md` – Project documentation  
+
 ---
 
 ## 6. Environment Specifications
@@ -242,4 +251,5 @@ This section describes the exact steps required to reproduce the pipeline execut
   dags/dynamic_pricing_dag.py
 
   This configuration change does not affect the pipeline logic or analytical results.
+
 
