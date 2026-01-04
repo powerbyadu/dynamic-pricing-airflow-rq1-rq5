@@ -168,7 +168,7 @@ dynamic-pricing-airflow-rq1-rq5/
 ├── start_env.sh
 └── README.md
 
-* 5.1 Folder purpose explanation:**
+* 5.1 Folder purpose explanation:
 
 - dags/` – Contains the Apache Airflow DAG definition that orchestrates the pipeline  
 - `src/` – Contains Python scripts for each pipeline stage (ingestion, processing, training, outputs)  
@@ -251,5 +251,6 @@ This section describes the exact steps required to reproduce the pipeline execut
   dags/dynamic_pricing_dag.py
 
   This configuration change does not affect the pipeline logic or analytical results.
+
 
 
