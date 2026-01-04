@@ -153,5 +153,93 @@ Raw datasets are **not committed to the repository** due to size considerations.
 
 ## 5. Repository Structure
 
+dynamic-pricing-airflow-rq1-rq5/
+├── dags/
+│ └── dynamic_pricing_dag.py
+├── src/
+│ ├── 01_ingest_join.py
+│ ├── 02_clean_features.py
+│ ├── 03_train.py
+│ └── 04_make_outputs.py
+├── outputs/
+│ ├── figures/
+│ └── tables/
+├── requirements.txt
+├── start_env.sh
+└── README.md
 
+---
+
+## 6. Environment Specifications
+
+- **Python Version:** 3.11.9  
+- **Operating System:** WSL (Ubuntu on Windows)
+
+---
+
+## 7. Reproducibility Instructions
+
+This section describes the exact steps required to reproduce the pipeline execution and regenerate the analytical outputs using Apache Airflow.
+
+* 7.1 Repository Setup
+  Clone the repository and navigate to the project directory:
+
+  git clone https://github.com/powerbyadu/dynamic-pricing-airflow-rq1-rq5.git
+  cd dynamic-pricing-airflow-rq1-rq5
+
+* 7.2 Python Environment Setup
+  Create and activate a virtual environment to isolate dependencies:
+  
+  python3 -m venv airflow_venv
+  source airflow_venv/bin/activate
+
+  Upgrade pip and install required packages:
+
+  pip install --upgrade pip
+  pip install -r requirements.txt
+
+* 7.3 Data Placement
+
+ data/
+ ├── train/
+ │   ├── df_Customers_train.csv
+ │   ├── df_Orders_train.csv
+ │   ├── df_OrderItems_train.csv
+ │   ├── df_Payments_train.csv
+ │   └── df_Products_train.csv
+ └── test/
+     ├── df_Customers_test.csv
+     ├── df_Orders_test.csv
+     ├── df_OrderItems_test.csv
+     ├── df_Payments_test.csv
+     └── df_Products_test.csv
+
+* 7.4 Airflow Initialization
+  Set the Airflow home directory within the project and initialize the metadata database:
+
+  export AIRFLOW_HOME="$(pwd)/airflow_home"
+  mkdir -p "$AIRFLOW_HOME"
+  airflow db init
+
+* 7.5 Starting Airflow Services
+  Start the Airflow webserver and scheduler in separate terminals:
+
+ * Termina 1
+   airflow webserver
+   
+ * Terminal 2
+   airflow scheduler
+  
+* 7.6 Executing the Pipeline
+  Open the Airflow web interface:
+
+  http://localhost:8080
+
+* 7.6 Notes on Environment Configuration
+  The Airflow DAG references a project directory path corresponding to the local development
+  environment. When running the project in a different directory, this path can be updated in:
+
+  dags/dynamic_pricing_dag.py
+
+  This configuration change does not affect the pipeline logic or analytical results.
 
