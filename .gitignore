@@ -1,0 +1,17 @@
+# Airflow runtime + venv
+airflow_home/
+airflow_venv/
+
+# Big data (keep local)
+data/raw/
+data/processed/
+data/train/
+data/test/
+
+# Model artifacts
+*.joblib
+
+# Python
+__pycache__/
+*.pyc
+
