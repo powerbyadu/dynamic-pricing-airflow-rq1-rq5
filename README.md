@@ -1,8 +1,5 @@
 # Dynamic Pricing Pipeline using Apache Airflow
 
-### Research Question–Driven Data Engineering Project (RQ1–RQ5)
-
----
 
 ## 1. Project Overview
 
@@ -155,5 +152,6 @@ Raw datasets are **not committed to the repository** due to size considerations.
 ---
 
 ## 5. Repository Structure
+
 
 
