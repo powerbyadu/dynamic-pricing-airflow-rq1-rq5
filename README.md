@@ -162,6 +162,37 @@ source airflow_venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 
+* 5.2 Place the dataset
+    data/
+  ├── train/
+  │   ├── df_Customers_train.csv
+  │   ├── df_Orders_train.csv
+  │   ├── df_OrderItems_train.csv
+  │   ├── df_Payments_train.csv
+  │   └── df_Products_train.csv
+  └── test/
+      ├── df_Customers_test.csv
+      ├── df_Orders_test.csv
+      ├── df_OrderItems_test.csv
+      ├── df_Payments_test.csv
+      └── df_Products_test.csv
+
+* 5.3 Execute pipeline scripts in order
+  * Data ingestion and joining
+    python src/01_ingest_join.py --split train
+    python src/01_ingest_join.py --split test
+
+  * Data cleaning and feature engineering
+    python src/02_clean_features.py --split train
+    python src/02_clean_features.py --split test
+
+  * Model training
+    python src/03_train.py
+
+  * Generate research outputs
+    python src/04_make_outputs.py --split train
+    python src/04_make_outputs.py --split test
+  
 
 ## 6. Repository Structure
 
@@ -263,6 +294,7 @@ This section describes the exact steps required to reproduce the pipeline execut
   dags/dynamic_pricing_dag.py
 
   This configuration change does not affect the pipeline logic or analytical results.
+
 
 
 
